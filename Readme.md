@@ -1,141 +1,60 @@
-# ⚙️ SAP Automation Projects
+# SAP Automation Projects
 
-A collection of automation scripts and tools built to streamline and simplify **SAP business operations** — including outbound delivery, invoice processing, production automation, material reservation, and scheduling agreements.
+> **Copyright & Usage Notice**  
+> Copyright © 2026 Aditya Sarkale. All rights reserved **to the extent of rights owned by the author**.  
+> No license is granted to copy, modify, redistribute, publish, sublicense, or use this source code or substantial portions of it outside the GitHub platform without prior written permission from the applicable rights holder.  
+> **Important:** Any company-owned, client-owned, SAP-proprietary, third-party, or otherwise restricted material remains subject to its applicable ownership, confidentiality, and licensing terms.
 
----
+## Purpose
+A collection of SAP automation projects covering repetitive business workflows such as outbound delivery/invoice processing, production automation, material reservation, scheduling agreements and related SAP GUI activities.
 
-## 🧭 Overview
+## Projects
+| Project | Primary workflow |
+|---|---|
+| [Scheduling Agreement Automation](https://github.com/AdiSarkale/Scheduling-Agreement-Automation-in-SAP) | ME38 scheduling-agreement processing |
+| [Transfer Posting SAP](https://github.com/AdiSarkale/Transfer-Posting-SAP) | Material transfer posting |
+| [SAP Production Automation & Material Reservation](https://github.com/AdiSarkale/SAP-Production-Automation-and-Material-Reservation) | CO11N / MB21 / VL01N workflows |
+| [Outbound Delivery & Invoice Automation](https://github.com/AdiSarkale/Outbound-Delivery-and-Invoice-Process-Automate) | Delivery, invoice and related processing |
 
-These projects automate repetitive SAP GUI and backend processes using Python scripting and SAP APIs, reducing manual work and improving operational efficiency.
-
----
-
-## 📂 Repository Structure
-
-SAP-Automation-Projects/
-├── Outbound-Delivery-and-Invoice-Process-Automate/
-│ ├── outbound_invoice_automation.py
-│ ├── requirements.txt
-│ └── README.md
-│
-├── SAP-Production-Automation-and-Material-Reservation/
-│ ├── production_material_reservation.py
-│ ├── requirements.txt
-│ └── README.md
-│
-├── Scheduling-Agreement-Automation-in-SAP/
-│ ├── scheduling_agreement.py
-│ ├── requirements.txt
-│ └── README.md
-│
-└── .gitignore
-
-
----
-
-## 🚀 Common Features
-
-✅ Automates SAP transactions and repetitive tasks  
-✅ Connects to SAP GUI via COM interface (PyWin32)  
-✅ Reduces human error in business-critical operations  
-✅ Logs activities for transparency and auditing  
-✅ Modular and easy-to-customize project structure  
-
----
-
-## 🧰 Tech Stack
-
-| Layer | Technologies |
-|--------|----------------|
-| **Language** | Python |
-| **Automation** | SAP GUI Scripting API, PyWin32 |
-| **Environment** | Windows (SAP GUI Installed) |
-| **Integration** | SAP RFC / BAPI (where applicable) |
-| **Web Layer (optional)** | Flask API for remote trigger |
-
----
-
-## 🛠 Prerequisites
-
-Before running any of the automation scripts:
-
-- 🖥️ Windows PC with **SAP GUI** installed  
-- 🔑 SAP credentials with appropriate access  
-- 🐍 **Python 3.8+**  
-- 📦 Required Python modules installed  
-
-Example:
-```bash
-pip install pywin32 python-dotenv flask
+## Common Architecture
+Most applications follow this pattern:
+```
+Web UI / Input File
+       ↓
+Python / Flask
+       ↓
+pywin32 / SAP GUI Scripting
+       ↓
+SAP transaction
+       ↓
+Status / result
 ```
 
-🧾 1. Outbound Delivery & Invoice Process Automation
-📘 Description
+## Common Prerequisites
+- Windows
+- SAP GUI for Windows
+- SAP GUI Scripting enabled on client
+- Server-side scripting enabled by SAP Basis where required
+- Python
+- Node.js for React-based frontends
+- Appropriate SAP authorization
 
-Automates the creation of outbound deliveries and invoices in SAP using TCodes such as VL01N, VF01, etc.
-It extracts sales orders, generates deliveries, and posts billing automatically.
+## Common Troubleshooting
+### SAP not logged in / User cancelled
+1. Confirm SAP GUI is logged in.
+2. Check the active scripting session.
+3. Open RZ11.
+4. Verify the relevant dynamic scripting parameter is **TRUE**.
+5. Escalate server configuration issues to SAP Basis.
 
-🧠 Steps
+### Website inaccessible
+Use the organization's approved internal server procedure. Internal server names, credentials and operational secrets are intentionally excluded from this public documentation.
 
-Connects to SAP GUI
+## Development Rules
+- Do not commit credentials or secrets.
+- Do not commit confidential company data.
+- Test SAP automation in a controlled environment before production execution.
+- Keep project-specific README files updated when workflows change.
 
-Reads order data from Excel or SAP tables
-
-Executes TCodes for delivery and billing
-
-Exports results (delivery no, invoice no) to CSV or log
-
-🧰 Tools
-
-Python (PyWin32)
-
-SAP GUI Scripting
-
-dotenv for environment variables
-
-🏭 2. SAP Production Automation & Material Reservation
-📘 Description
-
-Automates production order creation, confirmation, and material reservation steps in SAP.
-Useful for manufacturing workflows where manual TCode entry is repetitive.
-
-🧠 Steps
-
-Reads input data for planned orders
-
-Creates material reservations automatically
-
-Posts confirmations for completed orders
-
-Logs operations and reservation numbers
-
-🧰 Tools
-
-Python (PyWin32)
-
-SAP GUI Scripting
-
-Excel/CSV integration for order inputs
-
-📅 3. Scheduling Agreement Automation in SAP
-📘 Description
-
-Automates creation and update of scheduling agreements for vendors and materials (e.g., ME38, ME31L).
-
-🧠 Steps
-
-Connects to SAP GUI session
-
-Opens Scheduling Agreement TCodes
-
-Inputs vendor, material, and schedule data
-
-Saves or updates the agreement
-
-🧰 Tools
-
-Python (PyWin32)
-
-SAP GUI Scripting
-
-dotenv / config files for credentials
+## Author
+**Aditya Sarkale** — https://github.com/AdiSarkale
