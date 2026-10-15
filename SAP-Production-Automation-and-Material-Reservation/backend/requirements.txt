@@ -1,0 +1,5 @@
+# Backend dependencies for SAP production and material reservation automation
+Flask
+Flask-Cors
+pandas
+pywin32; platform_system == "Windows"
