@@ -1,0 +1,6 @@
+# Backend dependencies for Outbound Delivery and Invoice Process Automation
+Flask
+Flask-Cors
+pandas
+openpyxl
+pywin32; platform_system == "Windows"
